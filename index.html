@@ -82,8 +82,8 @@
     <!-- Foto do aniversariante -->
     <img src="CAlebe2.jpg" alt="Foto do aniversariante">
 
-    <p> Parabéns, meu amigo! 🎉</p>
-    <p> 10 anos de amizade e tantas histórias que nem cabem em uma mensagem! 
+    <p>Parabéns, meu amigo! 🎉</p>
+    <p>10 anos de amizade e tantas histórias que nem cabem em uma mensagem! 
     Desde risadas intermináveis, momentos que só a gente entende, até aquelas aventuras malucas que sempre dão certo 
     (ou nem tanto 😆). Que seu dia seja cheio de alegria, surpresas incríveis e muitas risadas. 
     Obrigado por sempre estar do meu lado, nos bons e nos “ruins” momentos. 
@@ -92,24 +92,29 @@
     <button onclick="alert('Parabéns! 🎁')">Clique aqui 🎊</button>
   </div>
 
- <!-- Música de fundo -->
-<audio id="musica" loop>
-  <source src="Celebration.mp3" type="audio/mpeg">
-  Seu navegador não suporta áudio.
-</audio>
+  <!-- Música de fundo -->
+  <audio id="musica" loop>
+    <source src="Celebration.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+  </audio>
 
-<!-- Botões de controle -->
-<div style="margin-top:20px;">
-  <button onclick="document.getElementById('musica').play()">▶ Tocar Música</button>
-  <button onclick="document.getElementById('musica').pause()">⏸ Pausar Música</button>
-</div>
+  <!-- Botões de controle -->
+  <div style="margin-top:20px;">
+    <button onclick="document.getElementById('musica').play()">▶ Tocar Música</button>
+    <button onclick="document.getElementById('musica').pause()">⏸ Pausar Música</button>
+  </div>
 
-<script>
-  // Define volume inicial baixo
-  const musica = document.getElementById("musica");
-  musica.volume = 0.3; // 30% do volume
+  <script>
+    const musica = document.getElementById("musica");
+    musica.volume = 0.3; // Volume inicial 30%
+    musica.muted = false;
 
-   // Gerar confetes coloridos
+    // Tocar música quando o usuário clicar em qualquer lugar da página
+    document.addEventListener("click", () => {
+      musica.play().catch(e => console.log("Erro ao tocar música:", e));
+    }, { once: true });
+
+    // Gerar confetes coloridos
     for (let i = 0; i < 50; i++) {
       let confetti = document.createElement("div");
       confetti.classList.add("confetti");
@@ -120,14 +125,6 @@
         "hsl(" + Math.random() * 360 + ", 100%, 50%)";
       confetti.style.animationDuration = (Math.random() * 3 + 2) + "s";
     }
-
-  // Ativar música quando o usuário clicar
-  document.addEventListener("click", () => {
-    musica.muted = false; // ativa o som
-    musica.play();
-  }, { once: true });
-</script>
-
+  </script>
 </body>
 </html>
-
