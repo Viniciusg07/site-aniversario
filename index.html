@@ -109,10 +109,17 @@
     musica.volume = 0.3; // Volume inicial 30%
     musica.muted = false;
 
-    // Tocar música quando o usuário clicar em qualquer lugar da página
-    document.addEventListener("click", () => {
-      musica.play().catch(e => console.log("Erro ao tocar música:", e));
-    }, { once: true });
+    // Função para tentar autoplay
+    function autoplayMusic() {
+      musica.play().catch(e => {
+        console.log("Autoplay bloqueado, aguardando interação do usuário...");
+      });
+    }
+
+    // Tenta tocar música automaticamente após carregar a página
+    window.addEventListener("load", () => {
+      autoplayMusic();
+    });
 
     // Gerar confetes coloridos
     for (let i = 0; i < 50; i++) {
