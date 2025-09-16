@@ -93,10 +93,16 @@
   </div>
 
  <!-- Música de fundo -->
-<audio id="musica" autoplay loop muted>
+<audio id="musica" loop>
   <source src="Celebration.mp3" type="audio/mpeg">
   Seu navegador não suporta áudio.
 </audio>
+
+<!-- Botões de controle -->
+<div style="margin-top:20px;">
+  <button onclick="document.getElementById('musica').play()">▶ Tocar Música</button>
+  <button onclick="document.getElementById('musica').pause()">⏸ Pausar Música</button>
+</div>
 
 <script>
   // Define volume inicial baixo
@@ -124,3 +130,4 @@
 
 </body>
 </html>
+
